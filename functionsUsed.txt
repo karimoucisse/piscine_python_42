@@ -1,0 +1,3 @@
+join => permet de transformet un tableau en string
+swapcase => transforme les majuscule en miniscule et vis versa
+isdigit / isnumeric => verifier si un string est un integer
