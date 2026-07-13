@@ -35,6 +35,7 @@ def text_analyzer(text=None):
 def main():
     if(len(sys.argv) != 2):
         print("Error, program should take one arg")
+        return
     text_analyzer(sys.argv[1])
 
 if __name__=="__main__":
