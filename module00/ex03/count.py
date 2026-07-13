@@ -1,4 +1,5 @@
 import string
+import sys
 
 def text_analyzer(text=None):
     """This function counts the number of upper characters, lower characters,
@@ -24,9 +25,17 @@ def text_analyzer(text=None):
             if(x == ' '):
                 espace_chr = espace_chr + 1
         print(f"The text contains {printable_chr} printable character(s):")
-        print(f"{upper_chr} upper letter(s)")
-        print(f"{lower_chr} lower letter(s)")
-        print(f"{punctuation_mark_chr} punctuation mark(s)")
-        print(f"{espace_chr} space(s)")
+        print(f"- {upper_chr} upper letter(s)")
+        print(f"- {lower_chr} lower letter(s)")
+        print(f"- {punctuation_mark_chr} punctuation mark(s)")
+        print(f"- {espace_chr} space(s)")
     except AssertionError as e:
         print(f"AssertionError: {e}")
+
+def main():
+    if(len(sys.argv) != 2):
+        print("Error, program should take one arg")
+    text_analyzer(sys.argv[1])
+
+if __name__=="__main__":
+    main()
