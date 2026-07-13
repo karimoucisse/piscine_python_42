@@ -17,9 +17,9 @@ def main():
         num = int(sys.argv[1])
         odd_even_zero(num)
     except AssertionError as e:
-        print(f"AssertionError {e}")
+        print(f"AssertionError: {e}")
     except Exception as ex:
-        print("AssertionError margument is not an integer")
+        print("AssertionError: argument is not an integer")
     
 
 if __name__=="__main__":
