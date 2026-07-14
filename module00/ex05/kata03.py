@@ -1,3 +1,3 @@
 kata = "The right format"
-print(f"{'-'*(42 - len(kata))}{kata}%")
+print(f"{kata.rjust(42, "-")}", end='')
 # rjust
