@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 
 def odd_even_zero(num):
@@ -10,11 +10,11 @@ def odd_even_zero(num):
         print("I'm Even.")
 
 def main():
-    if(len(sys.argv) < 2):
+    if(len(argv) < 2):
         return
     try:
-        assert len(sys.argv) == 2, "more than one argument is provided"
-        num = int(sys.argv[1])
+        assert len(argv) == 2, "more than one argument is provided"
+        num = int(argv[1])
         odd_even_zero(num)
     except AssertionError as e:
         print(f"AssertionError: {e}")

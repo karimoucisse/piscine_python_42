@@ -1,5 +1,5 @@
 import string
-import sys
+from sys import argv
 
 def text_analyzer(text=None):
     """This function counts the number of upper characters, lower characters,
@@ -33,10 +33,10 @@ def text_analyzer(text=None):
         print(f"AssertionError: {e}")
 
 def main():
-    if(len(sys.argv) != 2):
+    if(len(argv) != 2):
         print("Error, program should take one arg")
         return
-    text_analyzer(sys.argv[1])
+    text_analyzer(argv[1])
 
 if __name__=="__main__":
     main()

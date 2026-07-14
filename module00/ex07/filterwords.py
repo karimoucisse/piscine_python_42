@@ -1,10 +1,9 @@
-import sys
+from sys import argv
 import string
 
     
 
 def main():
-    argv = sys.argv
     if len(argv) != 3:
         return print("ERROR")
     if argv[1].isdigit() or not sys.argv[2].isdigit():

@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 def alignLength(text):
     return max(len(text) + 2)
@@ -14,12 +14,12 @@ def calculus(a, b):
 
 def main():
     try:
-        if(len(sys.argv) < 2):
+        if(len(argv) < 2):
             return print("Usage: python operations.py <number1> <number2>\nExample:\n\tpython operations.py 10 3")
-        assert len(sys.argv) == 3, "too many arguments"
-        for i in sys.argv[1:] :
+        assert len(argv) == 3, "too many arguments"
+        for i in argv[1:] :
             assert i.isnumeric(), "only integers"
-        calculus(int(sys.argv[1]), int(sys.argv[2]))
+        calculus(int(argv[1]), int(argv[2]))
     except AssertionError as e:
         print(f"AssertionError: {e}")
     
