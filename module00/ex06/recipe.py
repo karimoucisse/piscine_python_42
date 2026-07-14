@@ -88,23 +88,12 @@ def quit_prog():
     exit()   
 
 def main():
-    # options = {
-    #     "1": add_recipe(),
-    #     "2": delete_recipe(),
-    #     "3": print_recipe_details(),
-    #     "4": print_cookbook(),
-    #     "5": quit_prog()    
-    # }
     while True:
         print_options_message()
         option = input("Please select an option:\n")
         if not option:
             continue
-        
-        # if(option in list(options.keys())):
-        #     print[option]
-        # else:
-        #     print("Sorry, this option does not exist.")
+
         if(option == "1"): 
             add_recipe(),
         elif(option == "2"): 

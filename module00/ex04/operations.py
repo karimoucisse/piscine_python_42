@@ -1,7 +1,8 @@
 from sys import argv
+
 TAB = 11
-def alignLength(text):
-    return max(len(text) + 2)
+
+
 def calculus(a, b):
     print(f"{"Sum:".ljust(TAB)} {a + b}")
     print(f"{"Difference:".ljust(TAB)} {a - b}")

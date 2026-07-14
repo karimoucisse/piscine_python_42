@@ -6,7 +6,6 @@ OKBLUE = '\033[94m'
 ENDC = '\033[0m'
 
 def ft_progress(lst):
-    start = list(lst)[0]
     end = list(lst)[-1] + 1
     start_time = time() 
     

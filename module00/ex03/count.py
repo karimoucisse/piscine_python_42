@@ -13,6 +13,7 @@ def text_analyzer(text=None):
         while not text:
             text = input("What is the text to analyze?\n")
         assert isinstance(text, str), "argument is not a string"
+
         for x in text:
             if(x.isprintable()):
                 printable_chr = printable_chr + 1
@@ -24,11 +25,13 @@ def text_analyzer(text=None):
                 punctuation_mark_chr = punctuation_mark_chr + 1
             if(x == ' '):
                 espace_chr = espace_chr + 1
+                
         print(f"The text contains {printable_chr} printable character(s):")
         print(f"- {upper_chr} upper letter(s)")
         print(f"- {lower_chr} lower letter(s)")
         print(f"- {punctuation_mark_chr} punctuation mark(s)")
         print(f"- {espace_chr} space(s)")
+
     except AssertionError as e:
         print(f"AssertionError: {e}")
 
