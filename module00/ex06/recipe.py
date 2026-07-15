@@ -16,13 +16,15 @@ cookbook = {
     }
 }
 
+
+
 def print_recipes_name():
     for recipe in cookbook:
         print(recipe)
 
 def print_recipe_details(recipe_name = None):
     if not recipe_name:
-        recipe_name = input("Please enter a recipe name to get its details:\n")
+        recipe_name = input("Please enter a recipe name to get it details:\n")
     if not recipe_name in list(cookbook.keys()):
         return print("Sorry, this recipe does not exist.")
     recipe = cookbook[recipe_name]
@@ -40,9 +42,6 @@ def delete_recipe():
     if not recipe_name in list(cookbook.keys()):
         print(f"{recipe_name} recipe deleted !")
 
-def print_cookbook():
-    for recipe in cookbook:
-        print_recipe_details(recipe)
 
 def print_options_message():
     print("Welcome to the Python Cookbook !")
@@ -53,39 +52,55 @@ def print_options_message():
     print(" 4: Print the cookbook")
     print(" 5: Quit\n")
 
-def get_input(message, list_max = 1, data_type= str):
-    value = list()
-    while len(value) < list_max:
-        data = input(message)
-        if(data_type == int and not data.isdigit()):
-            print("The preparation time should be a positive number!")
-            continue
-        if data:
-            value.append(data)
-    return value
-
-def recipe_formules(i):
-    if i == 1:
-        cookbook[get_input("Enter a name:")[0]] = dict()
-    elif i == 2:
-        cookbook[list(cookbook)[-1]]["ingredients"] = get_input("Enter ingredients:", 3)
-    elif i == 3:
-        cookbook[list(cookbook)[-1]]["meal"] = get_input("Enter a meal type:")[0]
-    else :
-        cookbook[list(cookbook)[-1]]["prep_time"] = get_input("Enter a preparation time:", 1, int)[0]
-    return
-
-
-def add_recipe():
-    new_recipe = dict()
-    for i in range(1, 5):
-        recipe_formules(i)
-    print("Recipe created !!")
-    return
+def print_cookbook():
+    for recipe in cookbook:
+        print_recipe_details(recipe)
 
 def quit_prog():
     print("Cookbook closed. Goodbye!")
-    exit()   
+    exit() 
+
+
+def get_input(message, data_type= str):
+    value = str()
+    while not value:
+        value = input(message)
+        if(data_type == int and not value.isdigit()):
+            print("The preparation time should be a positive number!")
+            value = None
+            continue            
+        if value:
+            return value
+  fefe
+  ffdg
+  fgf  
+
+def recipe_formules(i):
+    if i == 1:
+        cookbook[get_input("Enter a name:\n")] = dict()
+    elif i == 2:
+        data_list = get_input("Enter ingredients:\n")
+        cookbook[list(cookbook)[-1]]["ingredients"] = data_list.split("\n")
+    elif i == 3:
+        cookbook[list(cookbook)[-1]]["meal"] = get_input("Enter a meal type:\n")
+    elif i == 4 :
+        prep_time = get_input("Enter a preparation time:\n", int)
+        cookbook[list(cookbook)[-1]]["prep_time"] = int(prep_time)
+        
+
+def add_recipe():
+    for i in range(1, 5):
+        recipe_formules(i)
+    print("Recipe created !!")
+
+
+options_functs = {
+    '1': add_recipe,
+    '2': delete_recipe,
+    '3': print_recipe_details,
+    '4': print_cookbook,
+    '5': quit_prog
+}
 
 def main():
     while True:
@@ -93,19 +108,12 @@ def main():
         option = input("Please select an option:\n")
         if not option:
             continue
-
-        if(option == "1"): 
-            add_recipe(),
-        elif(option == "2"): 
-            delete_recipe(),
-        elif(option == "3"): 
-            print_recipe_details(),
-        elif(option == "4"): 
-            print_cookbook(),
-        elif(option == "5"): 
-            quit_prog()
-        else:
+        funct = options_functs.get(option)
+        if not funct :
             print("Sorry, this option does not exist.")
+        else :
+            funct()       
 
 if __name__=="__main__":
     main()
+

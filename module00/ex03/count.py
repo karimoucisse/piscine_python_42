@@ -2,8 +2,10 @@ import string
 from sys import argv
 
 def text_analyzer(text=None):
-    """This function counts the number of upper characters, lower characters,
-        punctuation and spaces in a given text."""
+    """
+    This function counts the number of upper characters, lower characters,
+    punctuation and spaces in a given text.
+    """
     try:
         printable_chr = 0
         upper_chr = 0
@@ -38,7 +40,7 @@ def text_analyzer(text=None):
 def main():
     if(len(argv) != 2):
         print("Error, program should take one arg")
-        return
+        quit()
     text_analyzer(argv[1])
 
 if __name__=="__main__":

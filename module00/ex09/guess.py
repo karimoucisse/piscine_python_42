@@ -7,7 +7,7 @@ def main():
     print("Good luck!\n")
     num = randint(1, 99)
     count = 1
-    while 1:
+    while True:
         guess = input("what's your guess between 1 and 99?\n")
         if guess == "exit":
             print("Goodbye!")

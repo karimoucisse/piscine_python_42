@@ -10,8 +10,8 @@ def odd_even_zero(num):
         print("I'm Even.")
 
 def main():
-    if(len(argv) < 2):
-        return
+    # if(len(argv) < 2):
+    #     quit()
     try:
         assert len(argv) == 2, "more than one argument is provided"
         assert argv[1].isdigit(), "argument is not an integer"

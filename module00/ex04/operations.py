@@ -16,7 +16,8 @@ def calculus(a, b):
 def main():
     try:
         if(len(argv) < 2):
-            return print("Usage: python operations.py <number1> <number2>\nExample:\n\tpython operations.py 10 3")
+            print("Usage: python operations.py <number1> <number2>\nExample:\n\tpython operations.py 10 3")
+            quit()
         assert len(argv) == 3, "too many arguments"
         for i in argv[1:] :
             assert i.isnumeric(), "only integers"

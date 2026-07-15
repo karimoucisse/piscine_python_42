@@ -21,7 +21,7 @@ def ft_progress(lst):
         yield i
 
 def test():
-    listy = range(3333)
+    listy = range(1000)
     ret = 0
     for elem in ft_progress(listy):
         ret += elem
