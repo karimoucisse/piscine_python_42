@@ -1,33 +1,42 @@
 import numpy as np
 
 class ScrapBooker:
+
 	def crop(self, array, dim, position=(0,0)):
 		try:
 			s = array[dim[1]:dim[0] + 1, position[1]:position[0]]
 			return s
-		except (ValueError, TypeError) as e:
+		except Exception as ex:
 			return None
 
 	def thin(self, array, n, axis):
-		# try:
-			s = np.delete(array, list(range(n - 1, array.shape[1], n)), axis=n)
-			return s
-		# except (ValueError, TypeError) as e:
-		# 	return None
-
-	def juxtapose(self, array, n, a):
+		if axis == 1:
+			new_axis = 0
+		elif axis == 0:
+			new_axis = 1
 		try:
-			s = array
-			for i in range(n - 1):
-				s = np.append(s, array, axis = a)
+			s = np.delete(array, list(range(n - 1, array.shape[1], n)), axis=new_axis)
 			return s
-		except (ValueError, TypeError) as e:
+		except Exception as ex:
 			return None
 
-	# def mosaic(self, array, dim):
+	def juxtapose(self, array, n, axis):
+		try:
+			s = array
+			for i in range(0, n - 1):
+				s = np.concatenate((s, array), axis = axis)
+			return s
+		except Exception as ex:
+			return None
 
+	def mosaic(self, array, dim):
+		try:
+			a = self.juxtapose(array, dim[0], 0)
+			a = self.juxtapose(a, dim[1], 1)
+			return a
+		except Exception as ex:
+			return None
 
 spb = ScrapBooker()
-arr2 = np.array("A B C D E F G H I".split() * 6).reshape(-1,9)
-arr2 = np.array("A B C D E F G H I".split() * 6).reshape(-1,9)
-print(spb.thin(arr2,3,0))
+n = spb.mosaic(arr1, (2, 2))
+print(n)
