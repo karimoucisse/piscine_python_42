@@ -10,12 +10,13 @@ def ft_filter(function_to_apply, iterable):
 	None if the iterable can not be used by the function.
 	"""
 	for i in range(0, len(iterable)):
-		iterable[i] = function_to_apply(iterable[i])
-	return iterable
+		if function_to_apply(iterable[i]):
+			yield iterable[i]
 
 x = [1, 2, 3, 4, 5]
-print(ft_filter(lambda dum: not (dum % 2), x))
+res = ft_filter(lambda dum: not (dum % 2), x)
+print(list(res))
 
-print(list(ft_filter(lambda dum: not (dum % 2), x)))
+print(res)
 
 
