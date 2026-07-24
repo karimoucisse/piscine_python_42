@@ -16,6 +16,6 @@ class ImageProcessor:
 		plt.imshow(array)
 		plt.show()
 
-v = ImageProcessor()
-a = v.load("karimou.jpeg")
-v.display(a)
+img = ImageProcessor()
+arr = img.load("karimou.jpeg")
+img.display(arr)
