@@ -27,6 +27,6 @@ from matrix import Matrix, Vector
 # v1 = Vector([[1], [2], [3]])
 # print(m1 * v1) # Output: Vector([[8], [16]
 
-v1 = Vector([[1], [2], [3]])
-v2 = Vector([[2], [4], [8]])
-print(v2.dot(v1)) # Output: Vector([[3],[6],[11]])
+# v1 = Vector([[1], [2], [3]])
+# v2 = Vector([[2], [4], [8]])
+# print(v2.dot(v1)) # Output: Vector([[3],[6],[11]])

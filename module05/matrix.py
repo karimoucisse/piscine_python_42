@@ -32,7 +32,7 @@ class Matrix:
             res.append(row)
         return Matrix(res)
     
-    def __sub__(self, other_m): # other - self
+    def __rsub__(self, other_m): # other - self
         if not isinstance(other_m, Matrix):
             raise Exception("Value is not of type Matrix")
         if self.shape != other_m.shape:
@@ -46,29 +46,29 @@ class Matrix:
         return Matrix(res)
     
     # # div : only scalars.
-    def __truediv__(self, i):
-        if not isinstance(i, (int, float)):
+    def __truediv__(self, val):
+        if not isinstance(val, (int, float)):
             raise Exception("Scalars is not an integer")
-        if i == 0:
+        if val == 0:
             raise Exception("Number can't be devided by 0")
         res = list()
         for i in range(0, self.shape[0]):
             row = list()
             for j in range(0, self.shape[1]):
-                row.append(self.data[i][j] / i)
+                row.append(self.data[i][j] / val)
             res.append(row)
         return Matrix(res)
         
-    def __rtruediv__(self, i):
-        if not isinstance(i, (int, float)):
+    def __rtruediv__(self, val):
+        if not isinstance(val, (int, float)):
             raise Exception("Scalars is not an integer")
         res = list()
         for i in range(0, self.shape[0]):
             row = list()
             for j in range(0, self.shape[1]):
-                if(self.data[i][j] == 0):
+                if self.data[i][j] == 0:
                     raise Exception("Number can't be devided by 0")
-                row.append(i / self.data[i][j])
+                row.append(val / self.data[i][j])
             res.append(row)
         return Matrix(res)
 
