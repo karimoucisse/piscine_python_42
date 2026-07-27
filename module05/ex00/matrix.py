@@ -75,36 +75,44 @@ class Matrix:
     
     # # mul : scalars, vectors and matrices , can have errors with vectors and matrices,
     # # returns a Vector if we perform Matrix * Vector mutliplication.
+    def mul_matrix_vector(self, v):
+        res = list()
+        for i in range(0, self.shape[0]):
+            row = list()
+            for j in range(0, self.shape[1]):
+                row.append(self.data[i][j] * v.data[j][0])
+            res.append(sum(row))
+        return res
+    
     def __mul__(self, data):
         isScalars = isinstance(data, (int, float))
         isMatrix = type(self) == Matrix
         if not isScalars and not isMatrix:
             raise Exception("The value is not valide")
         isVector = isMatrix and data.shape[0] == 1 or data.shape[1] == 1
-        if isMatrix and not isVector:
-            if self.shape != data.shape:
-                raise Exception("Matrix are not the same shape")
-        if not isVector:
+        if isScalars:
             res = list()
             for i in range(0, self.shape[0]):
                 row = list()
                 for j in range(0, self.shape[1]):
-                    if isScalars:
                         row.append(self.data[i][j] * data)
-                    if isMatrix:
-                        row.append(self.data[i][j] * data.data[i][j])
                 res.append(row)
             return Matrix(res)
-        else :
-            if self.shape[1] != data.shape[0]:
-                raise Exception("impossible operations between matrix and vector")
+        elif isMatrix and not isVector:
+            if self.shape[0] != data.shape[1]:
+                raise Exception("impossible operations between 2 matrix of imcompatible shape")
             res = list()
-            for i in range(0, self.shape[0]):
+            for j in range(0, data.shape[1]):
                 row = list()
-                for j in range(0, self.shape[1]):
-                    row.append(self.data[i][j] * data.data[j][0])
-                res.append([sum(row)])
-            return Vector(res)
+                for i in range(0, data.shape[0]):
+                    row.append([data.data[i][j]])
+                res.append(self.mul_matrix_vector(Vector(row)))
+            return Matrix(res).T()
+        else : # matrix n of shape (m, n) have to match vector [n, 1] it will return a result of demension [m, 1]
+            if self.shape[1] != data.shape[0]:
+                raise Exception("impossible operations between matrix and vector") # don't have the same column size
+            return [self.mul_matrix_vector(data)]
+
             
     __rmul__ = __mul__
   

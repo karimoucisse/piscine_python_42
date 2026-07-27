@@ -62,3 +62,6 @@ print(list(v1))
 # np.where(condition, x, y)
 
 # a.T (attribut) : Transpose la matrice (inverse les lignes et les colonnes, $X^T$).
+
+# a multiplication between two matrix can be done if shape n are the same:
+    # shape(m, n) * shape(n, o) = shape(m, o)
