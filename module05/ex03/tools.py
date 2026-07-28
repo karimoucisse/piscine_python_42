@@ -2,11 +2,9 @@ import numpy as np
 
 def add_intercept(x):
     if x.ndim == 1:
-        ones_list = np.ones(x.shape[0])
-        res = np.stack((ones_list,x), axis=1)
-    else:
-        ones_list = np.ones((x.shape[0], 1))
-        res = np.hstack((ones_list,x))
+        x = x.reshape(x.shape[0], 1)
+    ones_list = np.ones((x.shape[0], 1))
+    res = np.hstack((ones_list,x))
     return res
     
 
