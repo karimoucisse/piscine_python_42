@@ -1,21 +1,11 @@
 import numpy as np
 
-def simple_predict(x, theta):
-    """Computes the vector of prediction y_hat from two non-empty numpy.ndarray.
-    Args:
-    x: has to be an numpy.ndarray, a one-dimensional array of size m.
-    theta: has to be an numpy.ndarray, a one-dimensional array of size 2.
-    Returns:
-    y_hat as a numpy.ndarray, a one-dimensional array of size m.
-    None if x or theta are empty numpy.ndarray.
-    None if x or theta dimensions are not appropriate.
-    Raises:
-    This function should not raise any Exception.
-    """
+def simple_predict(x, theta): # y = thata1 + theta0 * x 
+
     m = x.shape[0]
     res = np.ones(m)
     for i in range(m):
-        res[i] = theta[0] + (theta[1] * x[i])
+        res[i] = theta[0] + theta[1] * x[i]
     return res
 
 
