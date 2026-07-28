@@ -1,7 +1,10 @@
 import numpy as np
 
 def simple_predict(x, theta): # y = thata1 + theta0 * x 
-
+    if not isinstance(x, np.ndarray) or not isinstance(theta, np.ndarray):
+        return None
+    if x.size == 0 or theta.size == 0:
+        return None
     m = x.shape[0]
     res = np.ones(m)
     for i in range(m):

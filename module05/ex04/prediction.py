@@ -8,7 +8,10 @@ def add_intercept(x):
     return res
 
 def predict_(x, theta):
-   
+    if not isinstance(x, np.ndarray) or not isinstance(theta, np.ndarray):
+        return None
+    if x.size == 0 or theta.size == 0:
+        return None
     new_x = add_intercept(x)
     return new_x.dot(theta)
     # res = np.ones((x.shape[0], 1))

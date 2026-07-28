@@ -1,6 +1,10 @@
 import numpy as np
 
 def add_intercept(x):
+    if not isinstance(x, np.ndarray):
+        return None
+    if x.size == 0:
+        return None
     if x.ndim == 1:
         x = x.reshape(x.shape[0], 1)
     ones_list = np.ones((x.shape[0], 1))
