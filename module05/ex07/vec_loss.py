@@ -1,26 +1,15 @@
 import numpy as np
 
 
-def loss_elem_(y, y_hat):
-    if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
-        return None
-    if y.size == 0 or y_hat.size == 0:
-        return None
-    
-    loss_array = np.ones((y.shape[0], 1))
-    for i in range(y.shape[0]):
-        loss_array[i] = pow(y_hat[i] - y[i], 2)
-    return loss_array
-
 def loss_(y, y_hat):
     if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
         return None
     if y.size == 0 or y_hat.size == 0:
         return None
-    div = 1/(2*y.shape[0])
-    a = div * sum(loss_elem_(y, y_hat))[0] 
-    b = sum(loss_elem_(y, y_hat))[0]
-    return np.dot(a, b)
+    div = 1/(2*len(y))
+    res = sum(pow(y_hat - y, 2) * div)
+    return res
+
 
 
 def main():
