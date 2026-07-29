@@ -6,21 +6,21 @@ def mse_(y, y_hat):
     inv_m = 1/len(y)
     y_pow_n_diff = pow(y_hat - y, 2) 
     res = inv_m * y_pow_n_diff
-    return (sum(res)[0])
+    return (np.sum(res))
 
 def rmse_(y, y_hat):
     return sqrt(mse_(y, y_hat))
 
 def mae_(y, y_hat):
     inv_m = 1/len(y)
-    y_diff = abs(y_hat - y)
+    y_diff = np.sum(abs(y_hat - y))
     res = inv_m * y_diff
-    return (sum(res)[0])
+    return (res)
 
 def r2score_(y, y_hat):
-    n = sum(pow(y_hat - y, 2))
-    d = sum(pow(y - np.mean(y), 2))
-    return  float(1 - n[0] / d[0])
+    n = np.sum(pow(y_hat - y, 2))
+    d = np.sum(pow(y - np.mean(y), 2))
+    return  float(1 - n / d)
 
 def main():
     # Example 1:
