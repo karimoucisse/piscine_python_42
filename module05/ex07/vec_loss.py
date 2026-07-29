@@ -7,8 +7,7 @@ def loss_(y, y_hat):
     if y.size == 0 or y_hat.size == 0:
         return None
     div = 1/(2*len(y))
-    res = sum(pow(y_hat - y, 2) * div)
-    return res
+    return sum(div * (y_hat - y) * (y_hat - y))
 
 
 
@@ -22,7 +21,7 @@ def main():
     # 2.142857142857143
 
     # Example 2:
-    print(loss_(X, X))
+    # print(loss_(X, X))
     # Output:
     # 0.0
 
