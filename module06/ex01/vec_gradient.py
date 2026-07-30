@@ -3,11 +3,12 @@ import numpy as np
 def gradient(x, y, theta):
     _m = 1/len(x)
     ones_array = np.ones((x.shape[0], 1))
-    x_matrix = np.hstack((ones_array, x))
-    f_matrix = x_matrix.dot(theta)
-    x_transpose = np.transpose()
-    j = x_transpose * (f_matrix - y)
-    print(j)
+    x1 = np.hstack((ones_array, x))
+    x1_t = x1.T
+    x1_theta = x1.dot(theta)
+    a = _m * x1_t
+    b = x1_theta - y
+    return a.dot(b)
 
 
 def main():
@@ -16,13 +17,13 @@ def main():
 
     # Example 0:
     theta1 = np.array([2, 0.7]).reshape((-1, 1))
-    gradient(x, y, theta1)
+    print(gradient(x, y, theta1))
     # Output:
     # array([[-19.0342...], [-586.6687...]])
 
     # # Example 1:
-    # theta2 = np.array([1, -0.4]).reshape((-1, 1))
-    # gradient(x, y, theta2)
+    theta2 = np.array([1, -0.4]).reshape((-1, 1))
+    print(gradient(x, y, theta2))
     # # Output:
     # # array([[-57.8682...], [-2230.1229...]])
 
