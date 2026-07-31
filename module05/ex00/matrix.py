@@ -58,8 +58,9 @@ class Matrix:
                 row.append(self.data[i][j] / val)
             res.append(row)
         return Matrix(res)
+
         
-    def __rtruediv__(self, val):
+    def __rtruediv__(self, val): # raise exception
         if not isinstance(val, (int, float)):
             raise Exception("Scalars is not an integer")
         res = list()
@@ -72,6 +73,7 @@ class Matrix:
             res.append(row)
         return Matrix(res)
 
+
     
     # # mul : scalars, vectors and matrices , can have errors with vectors and matrices,
     # # returns a Vector if we perform Matrix * Vector mutliplication.
@@ -83,6 +85,8 @@ class Matrix:
                 row.append(self.data[i][j] * v.data[j][0])
             res.append(sum(row))
         return res
+        # return [[self.data[i][j] + v.data[j][0] for i in range(self.shape[0])]
+        #         for j in range(self.shape[1])]
     
     def __mul__(self, data):
         isScalars = isinstance(data, (int, float))
@@ -126,7 +130,7 @@ class Matrix:
         return Matrix(res)
     
     def __str__(self):
-        return str(self.data)
+        return f"{type(self).__name__}({self.data})"
     def __repr__(self):
         return str(self.data)
 
@@ -136,6 +140,10 @@ class Vector(Matrix):
         if len(data) != 1 and len(data[0]) != 1:
             raise Exception("Value is not a vector")
         super().__init__(data)
+
+    def __mul__(self, other):
+        matrix = super().__mul__(other)
+        return (Vector(matrix.data))
 
     def dot(self, v: Vector):
         if(self.shape != v.shape):
@@ -147,9 +155,9 @@ class Vector(Matrix):
                 for j in range(0, self.shape[1]):
                     row.append(self.data[i][j] * v.data[i][j])
                 res.append(row)
-            return Vector(res)
+            return sum(res)
         else:
             res = list()
             for i in range(0, self.shape[0]):
                 res.append(self.data[i] * v.data[i])
-            return Vector(res)
+            return sum(res)

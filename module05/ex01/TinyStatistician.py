@@ -62,6 +62,7 @@ class TinyStatistician:
         res = list()
         for i in x:
             res.append(pow(i - m, 2))
+        # np.sum((x - self.mean(x)) ** 2)
         return sum(res)/ len(x)
 
     def std(self, x):
@@ -70,10 +71,10 @@ class TinyStatistician:
         return math.sqrt(self.var(x))
 
 a = [1, 42, 300, 10, 59]
-# print(TinyStatistician().mean(a)) # Output: # 82.4
-# print(TinyStatistician().median(a)) # Output: 42.
-# print(TinyStatistician().quartile(a)) # Output:[10.0, 59.0]
-# print(TinyStatistician().percentile(a, 10)) # Output: 4.6
-# print(TinyStatistician().percentile(a, 10)) # Output: 4.6
-# print(TinyStatistician().var(a)) # Output: 12279.439999999999
-# print(TinyStatistician().std(a)) # Output: 110.81263465868862
+print(TinyStatistician().mean(a)) # Output: # 82.4
+print(TinyStatistician().median(a)) # Output: 42.
+print(TinyStatistician().quartile(a)) # Output:[10.0, 59.0]
+print(TinyStatistician().percentile(a, 10)) # Output: 4.6
+print(TinyStatistician().percentile(a, 10)) # Output: 4.6
+print(TinyStatistician().var(a)) # Output: 12279.439999999999
+print(TinyStatistician().std(a)) # Output: 110.81263465868862

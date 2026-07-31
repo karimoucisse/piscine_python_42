@@ -6,10 +6,10 @@ def simple_predict(x, theta): # y = thata1 + theta0 * x
     if x.size == 0 or theta.size == 0:
         return None
     m = x.shape[0]
-    res = np.ones(m)
-    for i in range(m):
-        res[i] = theta[0] + theta[1] * x[i]
-    return res
+    # res = np.ones(m)
+    # for i in range(m):
+    #     res[i] = theta[0] + theta[1] * x[i]
+    return theta[0] + theta[1] * x
 
 
 

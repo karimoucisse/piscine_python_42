@@ -22,8 +22,7 @@ def loss_elem_(y, y_hat):
     if y.size == 0 or y_hat.size == 0:
         return None
     loss_array = np.ones((y.shape[0], 1))
-    for i in range(y.shape[0]):
-        loss_array[i] = pow(y_hat[i] - y[i], 2)
+    loss_array = pow(y_hat - y, 2)
     return loss_array
 
 def loss_(y, y_hat):
@@ -32,7 +31,7 @@ def loss_(y, y_hat):
     if y.size == 0 or y_hat.size == 0:
         return None
     div = 1/(2*y.shape[0])
-    res = sum(loss_elem_(y, y_hat))[0] * div
+    res = np.sum(loss_elem_(y, y_hat)) * div
     return res
 
 def main():

@@ -1,9 +1,9 @@
 from matrix import Matrix, Vector
 
-# m1 = Matrix([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+m1 = Matrix([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
 # print(m1.shape) # output (3, 2)
-# print(m1.T()) # output Matrix([[0., 2., 4.], [1., 3., 5.]])
-# print(m1.T().shape) # output (2, 3)
+print(m1.T()) # output Matrix([[0., 2., 4.], [1., 3., 5.]])
+print(m1.T().shape) # output (2, 3)
 
 
 # m1 = Matrix([[0., 2., 4.], [1., 3., 5.]])
@@ -31,3 +31,6 @@ from matrix import Matrix, Vector
 # v1 = Vector([[1], [2], [3]])
 # v2 = Vector([[2], [4], [8]])
 # print(v2 + v1) # Output: Vector([[3],[6],[11]])
+
+# v1 = [[1, 2, 3 ,4]]
+# m2 = [[1, 2, 4, 4], [1, 4, 7, 8], [7, 8, 9, 6], [1, 4, 6, 7]]

@@ -36,6 +36,13 @@ class MyLinearRegression:
             return None
         loss_array = pow(y_hat - y, 2)
         return loss_array
+    
+    def mse_(self, y, y_hat):
+        print(y, y_hat)
+        inv_m = 1/len(y)
+        y_pow_n_diff = (y_hat - y) ** 2 
+        res = inv_m * y_pow_n_diff
+        return (np.sum(res))
 
     def loss_(self, y, y_hat):
         if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
@@ -43,14 +50,6 @@ class MyLinearRegression:
         if y.size == 0 or y_hat.size == 0:
             return None
         div = 1/(2*y.shape[0])
-        res = np.sum(self.loss_elem_(y, y_hat)) * div
+        res = self.loss_elem_(y, y_hat) * div
         return res
 
-
-
-def main():
-    print("Hello from ex03!")
-
-
-if __name__ == "__main__":
-    main()
