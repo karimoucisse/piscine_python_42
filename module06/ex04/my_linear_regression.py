@@ -36,11 +36,10 @@ class MyLinearRegression:
             return None
         loss_array = pow(y_hat - y, 2)
         return loss_array
-    
+
     def mse_(self, y, y_hat):
-        print(y, y_hat)
         inv_m = 1/len(y)
-        y_pow_n_diff = (y_hat - y) ** 2 
+        y_pow_n_diff = (y_hat - y) ** 2
         res = inv_m * y_pow_n_diff
         return (np.sum(res))
 
